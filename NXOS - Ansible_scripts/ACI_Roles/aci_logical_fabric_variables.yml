@@ -1,0 +1,17 @@
+---
+#tenant: tenant-from-roles
+
+tenant: "test-ansible-tenant-1"
+#vrf: vrf-from-roles
+
+vrfs: "vrf-1"
+
+#vrfs:
+#  - vrf: "vrf-1"
+#  - vrf: "vrf-2"
+
+bridge_domains: bd-from-roles
+
+#bridge_domains:
+ #- bd: "bd-1"
+ #- bd: "bd-2"

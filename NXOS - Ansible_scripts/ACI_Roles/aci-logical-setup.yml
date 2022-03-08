@@ -1,0 +1,11 @@
+---
+- name: ACI-LOGICAL-CONFIGURATION
+  hosts: apic
+  connection: local
+  gather_facts: False
+  vars_files:
+    - aci_logical_fabric_variables.yml
+  roles:
+    - aci_tenant_create_tenant
+    - aci_tenant_create_vrf
+    - aci_tenant_create_bd    

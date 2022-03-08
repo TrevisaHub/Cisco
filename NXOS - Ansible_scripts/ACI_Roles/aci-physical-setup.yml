@@ -1,0 +1,10 @@
+---
+- name: ACI-PHYSICAL-CONFIGURATION
+  hosts: apic
+  connection: local
+  gather_facts: False
+  vars_files:
+    - aci_physical_fabric_variables.yml
+  roles:
+    - aci_physical_add_fabric_node
+

@@ -1,0 +1,11 @@
+---
+    - name: ENSURE APPLICATIONS TENANT EXISTS
+      aci_tenant:
+        host: "{{ ansible_host }}"
+        username: admin
+        password: "@CID3m0"
+        state: "present"
+        validate_certs: False
+        tenant: "{{ tenant }}"
+        description: "Tenant Created Using Ansible"
+# tasks file for aci_tenant

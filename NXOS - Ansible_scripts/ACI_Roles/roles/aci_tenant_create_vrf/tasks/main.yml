@@ -1,0 +1,14 @@
+---
+# tasks file for aci_tenant_create_vrf
+- name: ENSURE TENANT VRF EXISTS
+  aci_vrf:
+    host: "{{ ansible_host }}"
+    username: "{{ username }}"
+    password: "{{ password }}"
+    state: "present"
+    validate_certs: False
+    tenant: "{{ tenant }}"
+    vrf: "{{ vrfs }}"
+  #  vrf: "{{ item.vrf }}"
+    description: "VRF Created Using Ansible"
+  #with_items: "{{ vrfs }}"

@@ -1,0 +1,114 @@
+---
+tenant: "TEST-102"
+
+#Tenants
+
+tenants:
+  - name: "CloudTenant"
+    description: "Created by Ansible"
+
+
+# ANP's + Tenant Association
+
+anps:
+  - name: "CLOUD-APP-1"
+    description: "Cloud Application 1"
+    tenant: "CloudTenant"
+
+
+
+# BD's + BD Association to Tenants
+
+bds:
+  - name: "WEB-TIER"
+    description: "Bridge Domain 1"
+    tenant: "CloudTenant"
+    vrf: "default"
+    subnet_name: "web-tier-subnet"
+    gw: "10.84.10.1"
+    mask: "24"
+    scope: "public"
+    l3out: "SESK-L3OUT-BGP"
+
+  - name: "APP-TIER"
+    description: "Bridge Domain 2"
+    tenant: "CloudTenant"
+    vrf: "default"
+    subnet_name: "app-tier-subnet"
+    gw: "10.84.11.1"
+    mask: "24"
+    scope: "private"
+
+  - name: "DB-TIER"
+    description: "Bridge Domain 3"
+    tenant: "CloudTenant"
+    vrf: "default"
+    subnet_name: "db-subnet"
+    gw: "10.84.12.1"
+    mask: "24"
+    scope: "private"
+
+# EPG's + Association to ANP's
+
+epg_contracts:
+  - tenant: CloudTenant
+    ap: CLOUD-APP-1
+    epg: WEB-TIER
+    name: WEB-TO-APP
+    type: consumer
+
+  - tenant: CloudTenant
+    ap: CLOUD-APP-1
+    epg: APP-TIER
+    name: WEB-TO-APP
+    type: provider
+
+  - tenant: CloudTenant
+    ap: CLOUD-APP-1
+    epg: APP-TIER
+    name: APP-TO-DB
+    type: consumer
+
+  - tenant: CloudTenant
+    ap: CLOUD-APP-1
+    epg: DB-TIER
+    name: APP-TO-DB
+    type: provider
+
+l3out_contracts:
+  - tenant: CloudTenant
+    ap: CLOUD-APP-1
+    epg: WEB-TIER
+    name: EPG-TO-L3OUT
+    type: provider
+
+
+
+
+epg:
+  - tenant: CloudTenant
+    ap: CLOUD-APP-1
+    name: WEB-TIER
+    description: Endpoint Group 1
+    bd: WEB-TIER
+    domain: VMM_DOMAIN
+    domain_type: vmm
+    vm_provider: vmware
+
+  - tenant: CloudTenant
+    ap: CLOUD-APP-1
+    name: APP-TIER
+    description: Endpoint Group 2
+    bd: APP-TIER
+    domain: VMM_DOMAIN
+    domain_type: vmm
+    vm_provider: vmware
+
+  - tenant: CloudTenant
+    ap: CLOUD-APP-1
+    name: DB-TIER
+    description: Endpoint Group 3
+    bd: DB-TIER
+    domain: VMM_DOMAIN
+    domain_type: vmm
+    vm_provider: vmware

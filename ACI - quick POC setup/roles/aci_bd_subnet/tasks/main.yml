@@ -1,0 +1,14 @@
+---
+- name: create a subnet with options
+  aci_bd_subnet:
+    host: "{{ apic }}"
+    username: "{{ username }}"
+    password: "{{ password }}"
+    validate_certs: no
+    tenant: "{{ item.tenant }}"
+    bd: "{{ item.name }}"
+    subnet_name: "{{ item.subnet_name }}"
+    gateway: "{{ item.gw }}"
+    mask: "{{ item.mask }}"
+    scope: "{{ item.scope }}"
+  with_items: "{{ bds }}"

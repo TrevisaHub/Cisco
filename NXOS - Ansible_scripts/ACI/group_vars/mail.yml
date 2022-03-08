@@ -1,0 +1,5 @@
+---
+
+tenant:
+        - name: "CLOUD-TENANT"
+          description: "sencond-try"

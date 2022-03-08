@@ -1,0 +1,23 @@
+---
+- name: TEST!
+  hosts: apic
+  connection: local
+  gather_facts: False
+  vars_files:
+    - variables.yml
+
+# this should be below the "gather_facts:"
+  #vars: 
+  #  tenant: TEST-101
+  #  other variables: value
+
+  tasks:
+    - name: ENSURE APPLICATIONS TENANT EXISTS
+      aci_tenant:
+        host: "{{ ansible_host }}"
+        username: "{{ username }}"
+        password: "{{ password }}"
+        state: "present"
+        validate_certs: False
+        tenant: "{{ tenant }}"
+        description: "Tenant Created Using Ansible"

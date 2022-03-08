@@ -1,0 +1,13 @@
+---
+- name: Add a new bd
+  aci_bd:
+    host: "{{ apic }}"
+    username: "{{ username }}"
+    password: "{{ password }}"
+    validate_certs: no
+    tenant: "{{ item.tenant }}"
+    bd: "{{ item.name }}"
+    description: "{{ item.description }}"
+    vrf: "{{ item.vrf }}"
+    state: present
+  with_items: "{{ bds }}"

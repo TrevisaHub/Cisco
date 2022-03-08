@@ -1,0 +1,14 @@
+---
+NODES:
+  - node_id: 105
+    switch: nyc-comm-aci-demo-leaf-2
+    serial: SAL1834Z90Y
+  - node_id: 103
+    switch: nyc-comm-aci-demo-leaf-1
+    serial: SAL1834ZE25
+  - node_id: 102
+    switch: nyc-comm-aci-demo-spine-1
+    serial: SAL183600H6
+  - node_id: 104
+    switch: nyc-comm-aci-demo-spine-2
+    serial: SAL1832Y6KF

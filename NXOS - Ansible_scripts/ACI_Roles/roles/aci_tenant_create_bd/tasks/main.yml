@@ -1,0 +1,15 @@
+---
+# tasks file for aci_tenant_create_bd
+- name: ENSURE TENANT BRIDGE DOMAIN EXISTS
+  aci_bd:
+    host: "{{ ansible_host }}"
+    username: "{{ username }}"
+    password: "{{ password }}"
+    state: "present"
+    validate_certs: False
+    tenant: "{{ tenant }}"
+    bd: "{{ bridge_domains }}"
+    #bd: "{{ item.bd }}"
+    vrf: "{{ vrfs }}"
+    description: "BD Created Using Ansible"
+  #with_items: "{{ bridge_domains }}"
